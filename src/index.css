@@ -1,4 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   margin: 0;
   font-family: Montserrat, sans-serif;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
 }
