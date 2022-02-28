@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.wrapper form div {
+  margin-bottom: 15px;
+}
+
+.wrapper form div:last-of-type {
+  margin-bottom: 40px;
+}
