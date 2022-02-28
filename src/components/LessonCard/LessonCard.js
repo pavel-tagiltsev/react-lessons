@@ -8,9 +8,9 @@ export default function LessonCard({ status }) {
   if (status === 'unstatused') cls.push(classes.unstatused)
 
   return (
-		<li className={cls.join(' ')} tabIndex={0}>
-			<p>20304 Kids box 4 (8-9 лет)</p>
-			<p>БЦ «Ника» -  14:30 - 15:30 </p>
-		</li>
+    <li className={cls.join(' ')} tabIndex={0}>
+      <p>20304 Kids box 4 (8-9 лет)</p>
+      <p>БЦ «Ника» -  14:30 - 15:30 </p>
+    </li>
   )
 }
