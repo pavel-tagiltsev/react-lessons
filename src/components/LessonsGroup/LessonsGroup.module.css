@@ -1,0 +1,15 @@
+.title {
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}

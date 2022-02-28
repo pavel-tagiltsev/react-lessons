@@ -1,0 +1,25 @@
+.popup {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  z-index: 100;
+
+  width: calc(100% - 40px);
+  padding: 60px 20px 40px;
+
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.popup h3 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.popup button {
+  margin-bottom: 10px;
+}
+
+.popup button:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,48 @@
+.card {
+  margin-bottom: 10px;
+  padding: 20px;
+
+  background-color: var(--porcelain);
+  border-radius: 20px;
+  outline-color: var(--tulip-tree);
+  outline-offset: 2px;
+  cursor: pointer;
+
+  transition: transform 0.2s;
+}
+
+.card.visited {
+  background-color: #dae9d9;
+}
+
+.card.unvisited {
+  background-color: #e8dbdb;
+}
+
+.card.unstatused {
+  background-color: var(--givry);
+}
+
+.card:focus,
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card:active {
+  opacity: 0.9;
+}
+
+.card:last-child {
+  margin-bottom: 30px;
+}
+
+.card p {
+  margin: 0;
+  margin-bottom: 8px;
+
+  text-align: center;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}

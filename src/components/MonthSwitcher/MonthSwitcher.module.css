@@ -1,0 +1,10 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+}
+
+.switcher h2 {
+  margin: 0;
+}
