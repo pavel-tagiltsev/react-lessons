@@ -1,0 +1,54 @@
+.cross {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 40px;
+  height: 40px;
+
+  background-color: var(--white);
+  border: none;
+  border-radius: 20px;
+  outline-color: var(--tulip-tree);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+.cross:focus,
+.cross:hover {
+  opacity: 0.9;
+}
+
+.cross:active {
+  opacity: 0.7;
+}
+
+.cross::after {
+  position: absolute;
+  top: 19px;
+  left: 7px;
+
+  width: 25px;
+  height: 3px;
+
+  background-color: var(--pickled-bluewood);
+  border-radius: 100px;
+  transform: rotate(-45deg);
+
+  content: '';
+}
+
+.cross::before {
+  position: absolute;
+  top: 19px;
+  left: 7px;
+
+  width: 25px;
+  height: 3px;
+
+  background-color: var(--pickled-bluewood);
+  border-radius: 100px;
+  transform: rotate(45deg);
+
+  content: '';
+}

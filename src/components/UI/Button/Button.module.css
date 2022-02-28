@@ -1,0 +1,42 @@
+.button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  color: var(--white);
+  font-size: 18px;
+
+  background: var(--lynch);
+  border: none;
+  border-radius: 20px;
+  outline-color: var(--tulip-tree);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+.button:focus,
+.button:hover {
+  background: var(--button-hover);
+}
+
+.button.success {
+  background-color: var(--bay-leaf);
+}
+
+.button.success:focus,
+.button.success:hover {
+  background-color: var(--button-success-hover);
+}
+
+.button.error {
+  background-color: var(--puce);
+}
+
+.button.error:focus,
+.button.error:hover {
+  background-color: var(--button-error-hover);
+}
+
+.button:active {
+  opacity: 0.9;
+}

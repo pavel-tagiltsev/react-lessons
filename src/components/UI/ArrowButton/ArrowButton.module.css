@@ -1,0 +1,34 @@
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-right: 5px;
+
+  background-color: var(--lynch);
+  border: none;
+  border-radius: 100px;
+  outline-color: var(--tulip-tree);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+.arrow:focus,
+.arrow:hover {
+  background-color: var(--button-hover);
+}
+
+.arrow:active {
+  opacity: 0.9;
+}
+
+.arrow svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.arrow.right {
+  transform: rotate(180deg);
+}

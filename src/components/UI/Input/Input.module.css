@@ -1,0 +1,69 @@
+.form {
+  position: relative;
+
+  width: 240px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+
+  color: var(--pickled-bluewood);
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+}
+
+.form label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-bottom: 1px solid var(--silver);
+
+  pointer-events: none;
+}
+
+.form label::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-bottom: 3px solid var(--lynch);
+  transform: translateX(-100%);
+
+  transition: transform 0.3s ease;
+
+  content: '';
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  color: var(--lynch);
+  font-size: 14px;
+
+  transform: translateY(-150%);
+}
+
+.form input:focus .label-name::after,
+.form input:valid + .label-name::after {
+  transform: translateX(0%);
+}
