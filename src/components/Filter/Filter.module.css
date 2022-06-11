@@ -2,34 +2,5 @@
   display: flex;
   justify-content: space-between;
   width: 280px;
-}
-
-.filter button {
-  padding: 8px 15px;
-
-  font-size: 14px;
-
-  background-color: var(--porcelain);
-  border: none;
-  border-radius: 20px;
-  outline-color: var(--tulip-tree);
-  outline-offset: 2px;
-  cursor: pointer;
-}
-
-.filter button.active {
-  color: var(--white);
-
-  background-color: var(--lynch);
-}
-
-.filter button:focus,
-.filter button:hover {
-  color: var(--white);
-
-  background-color: var(--button-hover);
-}
-
-.filter button:active {
-  opacity: 0.9;
+  margin: 0 auto 30px;
 }

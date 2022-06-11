@@ -1,16 +1,19 @@
 :root {
-  --lynch: #698498;
-  --bay-leaf: #8ab486;
-  --puce: #cb8085;
+  --basic-white: #ffffff;
+  --basic-blue: #698498;
+  --basic-green: #8ab486;
+  --basic-red: #cb8085;
+  --text-color: #2a334b;
   --button-success-hover: #789c75;
   --button-error-hover: #ac6d71;
   --button-hover: #5e7688;
-  --white: #fff;
-  --pickled-bluewood: #2a334b;
-  --silver: #c4c4c4;
-  --porcelain: #f2f5f6;
-  --givry: #f7e4c7;
-  --tulip-tree: #eea93e;
+  --disabled: #c4c4c4;
+  --outline: #eea93e;
+  --future: #f2f5f6;
+  --visited: #dae9d9;
+  --unvisited: #e8dbdb;
+  --unstatused: #f7e4c7;
+  --backdrop: #69849899;
 }
 
 html {
@@ -35,6 +38,14 @@ img {
 body {
   margin: 0;
 
-  color: var(--pickled-bluewood);
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 16px;
   font-family: Montserrat, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
 }

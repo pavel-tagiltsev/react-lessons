@@ -1,0 +1,33 @@
+.modul {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modul.entering {
+  animation: modul-in 310ms;
+}
+
+.modul.exiting {
+  animation: modul-out 310ms;
+}
+
+@keyframes modul-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modul-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

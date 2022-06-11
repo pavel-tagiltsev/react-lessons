@@ -1,31 +1,30 @@
 .card {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 20px;
 
-  background-color: var(--porcelain);
+  background-color: var(--future);
   border-radius: 20px;
-  outline-color: var(--tulip-tree);
+  outline-color: var(--outline);
   outline-offset: 2px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-
-  transition: transform 0.2s;
 }
 
 .card.visited {
-  background-color: #dae9d9;
+  background-color: var(--visited);
 }
 
 .card.unvisited {
-  background-color: #e8dbdb;
+  background-color: var(--unvisited);
 }
 
 .card.unstatused {
-  background-color: var(--givry);
+  background-color: var(--unstatused);
 }
 
 .card:focus,
 .card:hover {
-  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card:active {

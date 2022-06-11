@@ -1,0 +1,11 @@
+.exit {
+  width: 35px;
+  height: 35px;
+  margin-right: -6px;
+
+  fill: none;
+  stroke: var(--text-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 32px;
+}
