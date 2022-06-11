@@ -1,17 +1,20 @@
 .popup {
-  position: absolute;
-  top: 100px;
-  left: 20px;
-  z-index: 100;
+  position: relative;
+  z-index: 1;
 
-  width: calc(100% - 40px);
-  padding: 60px 20px 40px;
+  max-width: 400px;
+  min-height: 300px;
+  margin: 60px auto 0px;
+  padding: 60px 20px 20px;
 
   background-color: #fff;
   border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: default;
 }
 
 .popup h3 {
+  font-weight: 500;
   font-size: 24px;
   text-align: center;
 }
@@ -22,4 +25,95 @@
 
 .popup button:last-child {
   margin-bottom: 0;
+}
+
+.closeButtonPosition {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.exitButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.exitButton.entering {
+  animation: button-in 310ms;
+}
+
+.exitButton.exiting {
+  animation: button-out 310ms;
+}
+
+.exitButton.entered {
+  top: 16px;
+
+  transform: rotate(180deg);
+}
+
+@keyframes button-in {
+  0% {
+    top: 20px;
+
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 16px;
+
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes button-out {
+  0% {
+    top: 16px;
+
+    transform: rotate(180deg);
+  }
+
+  100% {
+    top: 20px;
+
+    transform: rotate(0deg);
+  }
+}
+
+.popup.entering {
+  animation: popup-in 300ms;
+}
+
+.popup.exiting {
+  animation: popup-out 300ms;
+}
+
+@keyframes popup-in {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes popup-out {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
 }

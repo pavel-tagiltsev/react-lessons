@@ -3,13 +3,13 @@
   width: 100%;
   padding: 15px;
 
-  color: var(--white);
+  color: var(--basic-white);
   font-size: 18px;
 
-  background: var(--lynch);
+  background: var(--basic-blue);
   border: none;
   border-radius: 20px;
-  outline-color: var(--tulip-tree);
+  outline-color: var(--outline);
   outline-offset: 2px;
   cursor: pointer;
 }
@@ -20,7 +20,7 @@
 }
 
 .button.success {
-  background-color: var(--bay-leaf);
+  background-color: var(--basic-green);
 }
 
 .button.success:focus,
@@ -29,7 +29,7 @@
 }
 
 .button.error {
-  background-color: var(--puce);
+  background-color: var(--basic-red);
 }
 
 .button.error:focus,
@@ -37,6 +37,36 @@
   background-color: var(--button-error-hover);
 }
 
+.button:disabled {
+  background-color: var(--disabled);
+}
+
+.button:disabled:focus,
+.button:disabled:hover {
+  background-color: var(--disabled);
+}
+
 .button:active {
   opacity: 0.9;
+}
+
+.button.loading {
+  animation: flickerAnimation 1s infinite;
+}
+
+.button.loading:focus,
+.button.loading:hover {
+  animation: flickerAnimation 1s infinite;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -3,8 +3,11 @@
   align-items: center;
   justify-content: space-between;
   width: 280px;
+  margin: 0 auto 15px;
 }
 
 .switcher h2 {
   margin: 0;
+
+  font-size: 30px;
 }

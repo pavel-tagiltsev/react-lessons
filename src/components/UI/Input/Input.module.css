@@ -11,7 +11,7 @@
   height: 100%;
   padding-top: 20px;
 
-  color: var(--pickled-bluewood);
+  color: var(--text-color);
   font-size: 18px;
 
   border: none;
@@ -26,7 +26,7 @@
   width: 100%;
   height: 100%;
 
-  border-bottom: 1px solid var(--silver);
+  border-bottom: 1px solid var(--disabled);
 
   pointer-events: none;
 }
@@ -39,7 +39,7 @@
   width: 100%;
   height: 100%;
 
-  border-bottom: 3px solid var(--lynch);
+  border-bottom: 3px solid var(--basic-blue);
   transform: translateX(-100%);
 
   transition: transform 0.3s ease;
@@ -56,14 +56,14 @@
 }
 
 .form input:focus + .label-name .content-name,
-.form input:valid + .label-name .content-name {
-  color: var(--lynch);
+.form input:not(:placeholder-shown) + .label-name .content-name {
+  color: var(--basic-blue);
   font-size: 14px;
 
   transform: translateY(-150%);
 }
 
 .form input:focus .label-name::after,
-.form input:valid + .label-name::after {
+.form input:not(:placeholder-shown) + .label-name::after {
   transform: translateX(0%);
 }

@@ -6,10 +6,10 @@
   height: 52px;
   margin-right: 5px;
 
-  background-color: var(--lynch);
+  background-color: var(--basic-blue);
   border: none;
   border-radius: 100px;
-  outline-color: var(--tulip-tree);
+  outline-color: var(--outline);
   outline-offset: 2px;
   cursor: pointer;
 }

@@ -1,0 +1,17 @@
+.wrapper {
+  text-align: center;
+}
+
+.wrapper h3 {
+  margin: 0;
+  margin-bottom: 35px;
+  padding-top: 20px;
+
+  font-weight: 400;
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  margin-right: -30px;
+}

@@ -1,0 +1,25 @@
+.thumb {
+  height: 50px;
+
+  border-radius: inherit;
+
+  cursor: pointer;
+}
+
+.thumb-dark {
+  background-color: var(--text-color);
+}
+
+.thumb-light {
+  background-color: var(--basic-blue);
+}
+
+.track {
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+
+  width: 6px;
+
+  border-radius: 3px;
+}
