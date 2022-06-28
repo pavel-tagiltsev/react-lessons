@@ -56,7 +56,7 @@ export default function AuthState({children}) {
       body,
       onError,
       onSuccess,
-      urlExtension: '/auth'
+      urlExtension: '/api/auth/singin'
     })
   }
 

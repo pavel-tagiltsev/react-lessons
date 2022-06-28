@@ -35,7 +35,7 @@ export default function LessonCard({lesson}) {
     >
       <p>{groupName}</p>
       <p>
-        <span>{filialName}</span>
+        <span>{filialName} - </span>
         <span>
           {beginTime} - {endTime}
         </span>

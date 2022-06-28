@@ -61,7 +61,7 @@ export default function LessonsState({children}) {
       params: {date, userId: user.userId},
       onError,
       onSuccess,
-      urlExtension: '/lessons'
+      urlExtension: '/api/moy-klass/lessons'
     })
   }
 
@@ -76,7 +76,7 @@ export default function LessonsState({children}) {
     await get({
       onError,
       onSuccess,
-      urlExtension: '/filials'
+      urlExtension: '/api/moy-klass/filials'
     })
   }
 
@@ -84,14 +84,14 @@ export default function LessonsState({children}) {
     const onSuccess = (res) => {
       dispatch({
         type: GET_STUDENTS,
-        payload: res.data.users
+        payload: res.data
       })
     }
 
     await get({
       onError,
       onSuccess,
-      urlExtension: '/students'
+      urlExtension: '/api/moy-klass/students'
     })
   }
 
@@ -106,7 +106,7 @@ export default function LessonsState({children}) {
     await get({
       onError,
       onSuccess,
-      urlExtension: '/groups'
+      urlExtension: '/api/moy-klass/groups'
     })
   }
 

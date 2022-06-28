@@ -53,7 +53,7 @@ export default function Popup({state}) {
 
       setIsLoading(true)
 
-      const body = {lessonId, status: lesson.status ? 0 : 1}
+      const body = {status: lesson.status ? 0 : 1}
 
       const onError = () => {
         setAlert('')
@@ -76,22 +76,20 @@ export default function Popup({state}) {
         body,
         onError,
         onSuccess,
-        urlExtension: '/status'
+        urlExtension: `/api/moy-klass/lessons/${lessonId}/status`
       })
     }
 
   const onRecordButtonClick = (clickedRecord) => async (setIsLoading) => {
     setIsLoading(true)
 
-    const body = {
-      id: clickedRecord.id,
-      visit: !clickedRecord.visit
-    }
+    const body = {visit: !clickedRecord.visit}
 
-    const onError = () => {
+    const onError = (error) => {
       setAlert('')
       setAlert('Произошла ошибка. Попробуйте повторить позже.')
       setIsLoading(false)
+      console.log(error)
     }
 
     const onSuccess = () => {
@@ -109,7 +107,7 @@ export default function Popup({state}) {
       body,
       onError,
       onSuccess,
-      urlExtension: '/records'
+      urlExtension: `/api/moy-klass/lessonRecords/${clickedRecord.id}`
     })
   }
 
