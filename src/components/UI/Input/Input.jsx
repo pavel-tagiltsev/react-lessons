@@ -1,12 +1,26 @@
+import React from 'react'
 import classes from './Input.module.css'
 
-export default function Input({name, label, type, required}) {
-  return (
-    <div className={classes.form}>
-      <input type={type} name={name} placeholder=" " required={required} />
-      <label className={classes['label-name']} htmlFor={name}>
-        <span className={classes['content-name']}>{label}</span>
-      </label>
-    </div>
-  )
-}
+const Input = React.forwardRef(
+  ({isFilled, errorMessage, label, className, ...attributes}, ref) => {
+    const cls = [classes.group]
+
+    isFilled && cls.push(classes.filled)
+    errorMessage && cls.push(classes.error)
+    className && cls.push(className)
+
+    return (
+      <div className={cls.join(' ')}>
+        <input className={classes.input} ref={ref} {...attributes} />
+        <span className={classes.highlight}></span>
+        <span className={classes.bar}></span>
+        <label className={classes.label} htmlFor={attributes.name}>
+          {label}
+        </label>
+        <span className={classes.message}>{errorMessage}</span>
+      </div>
+    )
+  }
+)
+
+export default Input

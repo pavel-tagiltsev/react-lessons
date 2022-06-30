@@ -16,12 +16,7 @@ export default function AuthState({children}) {
   const [state, dispatch] = useReducer(authReducer, initialState)
   const {user, isLoggedIn} = state
 
-  const login = async (email, password) => {
-    const body = {
-      email,
-      password
-    }
-
+  const login = async (data) => {
     const onError = (err) => {
       switch (err.message) {
         case 'Request failed with status code 404':
@@ -53,7 +48,7 @@ export default function AuthState({children}) {
     }
 
     await post({
-      body,
+      body: data,
       onError,
       onSuccess,
       urlExtension: '/api/auth/singin'
