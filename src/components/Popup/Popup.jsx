@@ -3,7 +3,6 @@ import {useStateIfMounted} from 'use-state-if-mounted'
 import {Transition} from 'react-transition-group'
 
 import {changeElemInArray, changeRecords} from '../../utils/utils'
-import post from '../../fetch/post'
 
 import LessonsContext from '../../context/lessons/lessonsContext'
 import AlertContext from '../../context/alert/alertContext'
@@ -16,6 +15,7 @@ import Loader from '../UI/Loader/Loader'
 import ExitSvg from '../Svg/ExitSvg/ExitSvg'
 
 import classes from './Popup.module.css'
+import PopupApi from '../../api/PopupApi'
 
 export default function Popup({state}) {
   const [isChangingStatus, setIsChangingStatus] = useStateIfMounted(false)
@@ -53,62 +53,49 @@ export default function Popup({state}) {
 
       setIsLoading(true)
 
-      const body = {status: lesson.status ? 0 : 1}
+      const response = await PopupApi.changeLessonsStatus(lessonId, {
+        status: lesson.status ? 0 : 1
+      })
 
-      const onError = () => {
+      if (response.status !== 200) {
         setAlert('')
         setAlert('Произошла ошибка. Попробуйте повторить позже.')
         setIsLoading(false)
+        return
       }
 
-      const onSuccess = () => {
-        setIsLoading(false)
-        setSuccessMessage(true)
+      setIsLoading(false)
+      setSuccessMessage(true)
 
-        const updatedLesson = {...lesson, status: lesson.status ? 0 : 1}
-        const updatedLessons = changeElemInArray(lessons, lesson, updatedLesson)
+      const updatedLesson = {...lesson, status: lesson.status ? 0 : 1}
+      const updatedLessons = changeElemInArray(lessons, lesson, updatedLesson)
 
-        changeLessons(updatedLessons)
-        setIsChangingStatusCallback(false)
-      }
-
-      await post({
-        body,
-        onError,
-        onSuccess,
-        urlExtension: `/api/moy-klass/lessons/${lessonId}/status`
-      })
+      changeLessons(updatedLessons)
+      setIsChangingStatusCallback(false)
     }
 
   const onRecordButtonClick = (clickedRecord) => async (setIsLoading) => {
     setIsLoading(true)
 
-    const body = {visit: !clickedRecord.visit}
+    const response = await PopupApi.changeRecordStatus(clickedRecord.id, {
+      visit: !clickedRecord.visit
+    })
 
-    const onError = (error) => {
+    if (response.status !== 200) {
       setAlert('')
       setAlert('Произошла ошибка. Попробуйте повторить позже.')
       setIsLoading(false)
-      console.log(error)
+      return
     }
 
-    const onSuccess = () => {
-      setIsLoading(false)
-      setSuccessMessage(true)
+    setIsLoading(false)
+    setSuccessMessage(true)
 
-      const records = changeRecords(lesson, clickedRecord)
-      const updatedLesson = {...lesson, records}
-      const updatedLessons = changeElemInArray(lessons, lesson, updatedLesson)
+    const records = changeRecords(lesson, clickedRecord)
+    const updatedLesson = {...lesson, records}
+    const updatedLessons = changeElemInArray(lessons, lesson, updatedLesson)
 
-      changeLessons(updatedLessons)
-    }
-
-    await post({
-      body,
-      onError,
-      onSuccess,
-      urlExtension: `/api/moy-klass/lessonRecords/${clickedRecord.id}`
-    })
+    changeLessons(updatedLessons)
   }
 
   const onChangeStatusClick = (boolean) => {
