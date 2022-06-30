@@ -3,7 +3,7 @@ import LessonsContext from './lessonsContext'
 import AuthContext from '../auth/authContext'
 import lessonsReducer from './lessonsReducer'
 import {getQueryRange} from '../../utils/utils'
-import get from '../../fetch/get'
+import LessonsApi from '../../api/LessonsApi'
 
 import {
   GET_GROUPS,
@@ -45,68 +45,59 @@ export default function LessonsState({children}) {
     })
   }
 
-  const onError = () => {
-    dispatch({type: SET_LESSONS_ERROR})
-  }
-
   const getLessons = async (date = getQueryRange()) => {
-    const onSuccess = (res) => {
-      dispatch({
-        type: GET_LESSONS,
-        payload: res.data
-      })
+    const response = await LessonsApi.getLessons({date, userId: user.userId})
+
+    if (response.status !== 200) {
+      dispatch({type: SET_LESSONS_ERROR})
+      return
     }
 
-    await get({
-      params: {date, userId: user.userId},
-      onError,
-      onSuccess,
-      urlExtension: '/api/moy-klass/lessons'
+    dispatch({
+      type: GET_LESSONS,
+      payload: response.data
     })
   }
 
   const getFilials = async () => {
-    const onSuccess = (res) => {
-      dispatch({
-        type: GET_FILIALS,
-        payload: res.data
-      })
+    const response = await LessonsApi.getFilials()
+
+    if (response.status !== 200) {
+      dispatch({type: SET_LESSONS_ERROR})
+      return
     }
 
-    await get({
-      onError,
-      onSuccess,
-      urlExtension: '/api/moy-klass/filials'
+    dispatch({
+      type: GET_FILIALS,
+      payload: response.data
     })
   }
 
   const getStudents = async () => {
-    const onSuccess = (res) => {
-      dispatch({
-        type: GET_STUDENTS,
-        payload: res.data
-      })
+    const response = await LessonsApi.getStudents()
+
+    if (response.status !== 200) {
+      dispatch({type: SET_LESSONS_ERROR})
+      return
     }
 
-    await get({
-      onError,
-      onSuccess,
-      urlExtension: '/api/moy-klass/students'
+    dispatch({
+      type: GET_STUDENTS,
+      payload: response.data
     })
   }
 
   const getGroups = async () => {
-    const onSuccess = (res) => {
-      dispatch({
-        type: GET_GROUPS,
-        payload: res.data
-      })
+    const response = await LessonsApi.getGroups()
+
+    if (response.status !== 200) {
+      dispatch({type: SET_LESSONS_ERROR})
+      return
     }
 
-    await get({
-      onError,
-      onSuccess,
-      urlExtension: '/api/moy-klass/groups'
+    dispatch({
+      type: GET_GROUPS,
+      payload: response.data
     })
   }
 

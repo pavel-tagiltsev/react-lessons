@@ -2,12 +2,12 @@ import {useReducer, useContext} from 'react'
 import AlertContext from '../alert/alertContext'
 import AuthContext from './authContext'
 import authReducer from './authReducer'
-import post from '../../fetch/post'
+import AuthApi from '../../api/AuthApi'
 
 import {LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT} from '../types'
 
 export default function AuthState({children}) {
-  const currentUser = JSON.parse(localStorage.getItem('user'))
+  const currentUser = localStorage.user && JSON.parse(localStorage.user)
   const initialState = currentUser
     ? {isLoggedIn: true, user: currentUser}
     : {isLoggedIn: false, user: null}
@@ -17,46 +17,34 @@ export default function AuthState({children}) {
   const {user, isLoggedIn} = state
 
   const login = async (data) => {
-    const onError = (err) => {
-      switch (err.message) {
-        case 'Request failed with status code 404':
-          setAlert('')
-          setAlert('Не найден пользователь!')
-          break
-        case 'Request failed with status code 401':
-          setAlert('')
-          setAlert('Неверный пароль!')
-          break
-        default:
-          setAlert('')
-      }
+    const response = await AuthApi.login(data)
 
-      dispatch({
-        type: LOGIN_FAIL
-      })
-    }
-
-    const onSuccess = (res) => {
-      if (res.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(res.data))
-      }
-
+    if (response.status === 200) {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
+        payload: response.data
       })
+      return
     }
 
-    await post({
-      body: data,
-      onError,
-      onSuccess,
-      urlExtension: '/api/auth/singin'
+    switch (response.response.status) {
+      case 401:
+        setAlert('')
+        setAlert('Неверный логин или пароль.')
+        break
+      default:
+        setAlert('')
+        setAlert('Произошла ошибка. Повторите позже.')
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
     })
   }
 
   const logout = () => {
     localStorage.removeItem('user')
+    localStorage.removeItem('accessToken')
     dispatch({type: LOGOUT})
   }
 
