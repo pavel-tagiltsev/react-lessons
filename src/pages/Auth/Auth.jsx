@@ -13,15 +13,17 @@ yup.setLocale({
   },
   string: {
     email: 'Введите корректный адрес',
-    min: 'Введите не менее ${min} символов'
+    matches: 'Не должен содеражить пробелов',
+    min: 'Минимальная длина ${min} символов',
+    max: 'Максимальная длина ${max} символов'
   }
 })
 
 const schema = yup
   .object()
   .shape({
-    email: yup.string().email().required(),
-    password: yup.string().min(4).required()
+    email: yup.string().email().lowercase().trim().required(),
+    password: yup.string().min(6).max(16).matches(/^\S*$/).required()
   })
   .required()
 
