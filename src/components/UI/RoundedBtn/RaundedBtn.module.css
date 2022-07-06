@@ -6,6 +6,8 @@
   height: 55px;
   padding: 0;
 
+  color: var(--text-color);
+
   font-weight: 500;
   font-size: 14px;
 
