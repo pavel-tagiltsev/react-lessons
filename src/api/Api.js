@@ -5,7 +5,7 @@ const NONAUTH_ROUTES = ['/login']
 axios.defaults.headers.common.Accept = 'application/json'
 
 const ApiInstance = axios.create({
-  baseURL: 'http://localhost:3004/api',
+  baseURL: process.env.REACT_APP_API_URL,
   timeout: 30000,
   maxBodyLength: Infinity,
   maxContentLength: Infinity
