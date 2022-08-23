@@ -45,7 +45,7 @@ export default function Auth() {
 
   return (
     <div className={classes.wrapper}>
-      <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
+      <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="on">
         <Input
           className="sfasdfasd"
           label="Почта"
