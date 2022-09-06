@@ -6,6 +6,7 @@ import classes from './Auth.module.css'
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import {useState} from 'react'
 
 yup.setLocale({
   mixed: {
@@ -29,6 +30,7 @@ const schema = yup
 
 export default function Auth() {
   const {login} = useContext(AuthContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     watch,
@@ -40,14 +42,15 @@ export default function Auth() {
   })
 
   const onFormSubmit = async (data) => {
+    setTimeout(() => setIsLoading(true), 600)
     await login(data)
+    setIsLoading(false)
   }
 
   return (
     <div className={classes.wrapper}>
       <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="on">
         <Input
-          className="sfasdfasd"
           label="Почта"
           type="text"
           isFilled={Boolean(watch('email'))}
@@ -62,6 +65,9 @@ export default function Auth() {
           {...register('password')}
         />
         <Button type="submit">Войти</Button>
+        {isLoading && (
+          <p style={{textAlign: 'center'}}>Выход из спящего режима</p>
+        )}
       </form>
     </div>
   )
