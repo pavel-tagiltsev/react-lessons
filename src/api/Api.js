@@ -35,7 +35,7 @@ ApiInstance.interceptors.response.use(
     ) {
       localStorage.removeItem('user')
       localStorage.removeItem('accessToken')
-      window.location = `http://localhost:3000/login?redirect=${window.location.pathname}`
+      window.location = `https://react-lessons-five.vercel.app/login?redirect=${window.location.pathname}`
     }
     return Promise.reject(error)
   }
